@@ -24,7 +24,7 @@ repeat
 until game.Players.LocalPlayer
 wait(5)
 LoadedUiHub = false
-local b = syn and syn.request or identifyexecutor() == "Fluxus" and request or http_request or requests or identifyexecutor() == "Valyse v1" or indentifyexecutor() == "Electron"
+local b = syn and syn.request or identifyexecutor() == "Fluxus" and request or http_request or requests or identifyexecutor() == "Codex" or indentifyexecutor() == "Electron"
 
 function C()
     if not game:IsLoaded()then 
