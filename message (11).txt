@@ -1,0 +1,303 @@
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local LocalPlayer = Players.LocalPlayer
+local Enemies = Workspace.Enemies
+local Pos = CFrame.new(0, 25, 0) -- Adjustable position offset
+local API_URL = "https://donebell.vercel.app/api/Dark"
+
+getgenv().AutoDarkbeard = true
+
+getgenv().SelectWeapon = "Melee"
+
+local function AutoHaki()
+    if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+    end
+end
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local WeaponCooldown = {
+    Equip = { LastTime = 0, Duration = 0.5 },
+    Unequip = { LastTime = 0, Duration = 0.5 }
+}
+
+local function canPerformAction(actionType)
+    local cooldown = WeaponCooldown[actionType]
+    local currentTime = tick()
+    if currentTime - cooldown.LastTime >= cooldown.Duration then
+        cooldown.LastTime = currentTime
+        return true
+    end
+    return false
+end
+
+getgenv().EquipWeapon = function(toolName)
+    if getgenv().NotAutoEquip or not canPerformAction("Equip") then
+        return false
+    end
+    local character = LocalPlayer.Character
+    local backpack = LocalPlayer.Backpack
+    local humanoid = character and character:FindFirstChild("Humanoid")
+    if not humanoid then
+        return false
+    end
+    if character:FindFirstChild(toolName) then
+        return true
+    end
+    local tool = backpack:FindFirstChild(toolName)
+    if tool and tool:IsA("Tool") then
+        pcall(function()
+            humanoid:EquipTool(tool)
+        end)
+        return true
+    end
+
+    return false
+end
+
+getgenv().UnequipWeapon = function(toolName)
+    if not canPerformAction("Unequip") then
+        return false
+    end
+
+    local character = LocalPlayer.Character
+    local humanoid = character and character:FindFirstChild("Humanoid")
+
+    if not humanoid then
+        return false
+    end
+
+    local equippedTool = character:FindFirstChild(toolName)
+    if equippedTool and equippedTool:IsA("Tool") then
+        pcall(function()
+            getgenv().NotAutoEquip = true
+            humanoid:UnequipTools()
+            equippedTool.Parent = LocalPlayer.Backpack
+            task.wait(0.1)
+            getgenv().NotAutoEquip = false
+        end)
+        return true
+    end
+
+    return false
+end
+
+task.spawn(function()
+    local lastWeapon = nil
+    local weaponCache = {}
+
+    while task.wait(0.5) do
+        pcall(function()
+            weaponCache = {}
+            for _, tool in pairs(LocalPlayer.Backpack:GetChildren()) do
+                if tool:IsA("Tool") and tool.ToolTip then
+                    weaponCache[tool.ToolTip] = tool.Name
+                end
+            end
+
+            if getgenv().SelectWeapon == lastWeapon then
+                return
+            end
+
+            lastWeapon = getgenv().SelectWeapon
+
+
+            local toolName = weaponCache[getgenv().SelectWeapon] or getgenv().SelectWeapon
+            
+            if toolName and LocalPlayer.Backpack:FindFirstChild(toolName) then
+                getgenv().EquipWeapon(toolName)
+            end
+        end)
+    end
+end)
+
+getgenv().EQ = function()
+    local character = LocalPlayer.Character
+    local humanoid = character and character:WaitForChild("Humanoid", 2)
+    
+    if not humanoid then
+        return false
+    end
+
+    for _, tool in pairs(LocalPlayer.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.ToolTip == getgenv().SelectWeapon then
+            return getgenv().EquipWeapon(tool.Name)
+        end
+    end
+    return false
+end
+
+local v21 = game.Players.LocalPlayer;
+function FindEnemiesInRange(v223, v224)
+    local v225 = (v21.Character or v21.CharacterAdded:Wait()):GetPivot().Position;
+    local v226 = nil;
+    for v471, v472 in ipairs(v224) do
+        if (not v472:GetAttribute("IsBoat") and v472:FindFirstChildOfClass("Humanoid") and (v472.Humanoid.Health > 0)) then
+            local v671 = v472:FindFirstChild("Head");
+            if (v671 and ((v225 - v671.Position).Magnitude <= 60)) then
+                if (v472 ~= v21.Character) then
+                    table.insert(v223, {
+                        v472,
+                        v671
+                    });
+                    v226 = v671;
+                end
+            end
+        end
+    end
+    for v473, v474 in ipairs(game.Players:GetPlayers()) do
+        if (v474.Character and (v474 ~= v21)) then
+            local v672 = v474.Character:FindFirstChild("Head");
+            if (v672 and ((v225 - v672.Position).Magnitude <= 60)) then
+                table.insert(v223, {
+                    v474.Character,
+                    v672
+                });
+                v226 = v672;
+            end
+        end
+    end
+    return v226;
+end
+function GetEquippedTool()
+    local v227 = v21.Character;
+    if not v227 then
+        return nil;
+    end
+    for v475, v476 in ipairs(v227:GetChildren()) do
+        if v476:IsA("Tool") then
+            return v476;
+        end
+    end
+    return nil;
+end
+function AttackNoCoolDown()
+    local v228 = {};
+    local v229 = game:GetService("Workspace").Enemies:GetChildren();
+    local v230 = FindEnemiesInRange(v228, v229);
+    if not v230 then
+        return;
+    end
+    local v231 = GetEquippedTool();
+    if not v231 then
+        return;
+    end
+    pcall(function()
+        local v477 = game:GetService("ReplicatedStorage");
+        local v478 = v477:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterAttack");
+        local v479 = v477:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterHit");
+        if (# v228 > 0) then
+            v478:FireServer(1e-9);
+            v479:FireServer(v230, v228);
+        else
+            task.wait(1e-9);
+        end
+    end);
+end
+
+local function EquipWeapon(weaponName)
+    local backpack = LocalPlayer.Backpack
+    local character = LocalPlayer.Character
+    if character and backpack then
+        local tool = backpack:FindFirstChild(weaponName) or character:FindFirstChild(weaponName)
+        if tool then
+            character.Humanoid:EquipTool(tool)
+        end
+    end
+end
+
+local function topos(targetCFrame)
+    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        LocalPlayer.Character.HumanoidRootPart.CFrame = targetCFrame
+    end
+end
+
+local function CheckAndHandleDarkbeard()
+    local foundDarkbeard = false
+    local darkbeard = Enemies:FindFirstChild("Darkbeard") or ReplicatedStorage:FindFirstChild("Darkbeard")
+    if darkbeard and darkbeard.Parent == Enemies then
+        foundDarkbeard = true
+        for _, enemy in pairs(Enemies:GetChildren()) do
+            if enemy.Name == "Darkbeard" and 
+               enemy:FindFirstChild("Humanoid") and 
+               enemy:FindFirstChild("HumanoidRootPart") and 
+               enemy.Humanoid.Health > 0 then
+                repeat
+                    task.wait(0.05)
+                    AutoHaki()
+                    AttackNoCoolDown()
+                    EquipWeapon(getgenv().SelectWeapon)
+                    enemy.HumanoidRootPart.CanCollide = false
+                    enemy.Humanoid.WalkSpeed = 0
+                    topos(enemy.HumanoidRootPart.CFrame * Pos)
+                until not getgenv().AutoDarkbeard or 
+                      not enemy.Parent or 
+                      enemy.Humanoid.Health <= 0
+            end
+        end
+    elseif LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") or 
+           LocalPlayer.Character:FindFirstChild("Fist of Darkness") then
+        repeat
+            task.wait(0.1)
+            topos(CFrame.new(3778.584, 15.791, -3499.404))
+            EquipWeapon("Fist of Darkness")
+        until not getgenv().AutoDarkbeard or Enemies:FindFirstChild("Darkbeard")
+    elseif darkbeard and darkbeard.Parent == ReplicatedStorage then
+        topos(darkbeard.HumanoidRootPart.CFrame * Pos)
+    end
+    
+    return foundDarkbeard
+end
+
+local function ServerHopForDarkbeard()
+    local success, response = pcall(function()
+        return HttpService:JSONDecode(game:HttpGet(API_URL))
+    end)
+    if success and response then
+        for id, server in pairs(response) do
+            if server and 
+               server.boss and 
+               server.boss:lower():find("darkbeard") and 
+               server.NumPlayer and 
+               tonumber(string.match(server.NumPlayer, "(%d+)/")) < 10 and -- Less than 10 players
+               server._id and 
+               server._id ~= game.JobId then
+                
+                print("Found server with Darkbeard, teleporting to:", server._id)
+                pcall(function()
+                    TeleportService:TeleportToPlaceInstance(game.PlaceId, server._id, LocalPlayer)
+                end)
+                return true
+            end
+        end
+        warn("No suitable Darkbeard server found, performing regular hop...")
+        pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+    else
+        warn("API request failed, performing regular hop...")
+        pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+    end
+    return false
+end
+
+spawn(function()
+    while task.wait(1) and getgenv().AutoDarkbeard do
+        pcall(function()
+            local darkbeardFound = CheckAndHandleDarkbeard()
+            
+            if not darkbeardFound then
+                task.wait(2)
+                ServerHopForDarkbeard()
+            end
+        end)
+    end
+end)
