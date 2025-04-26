@@ -1,0 +1,1567 @@
+getgenv().Config = {
+    ["Team"] = "Pirates",        --  "Marines"
+    ["Auto Team"] = {
+    ["Enable Lock Bounty"] = false,
+    ["Lock Bounty"] = {0, 300000000},
+    },
+    ["Panic % Health"] = {35,50},
+    ["Skip"] = { 
+        ["Fruit"] = {["Enabled"] = true,
+            ["List"] = {
+                "Portal-Portal",
+            }
+        },
+        ["V4"] = false,
+    },
+    ["Hunt Method"] = {
+        ["Use Move Predict"] = true,
+        ["Hit and Run"] = true
+    },
+    ["Spam All Skill On V4"] = {
+        ["Enabled"] = true,
+        ["Weapons"] = {"Melee", "Gun"}
+    },
+    ["Chat Kill"] = {
+        ["Enabled"] = false,
+        ["Message"] = {"join my server .gg/wWX6EAYzrA"}
+    },
+    ["Custom Y Run"] = {
+        ["Enabled"] = false,
+        ["Y Run"] = 100
+    },
+    ["Misc"] = {
+        ["Cam Farm"] = false,
+        ["White Screen"] = false,
+        ["Click Delay"] = 1.5,
+        ["HightLight Mode"] = true,
+        ["Hide Map"] = false,
+    },
+    ["Items"] = {["Use"] = {"Melee", "Gun"},
+        ["Melee"] = {
+            ["Enable"] = true,
+            ["Delay"] = 1,
+            ["Skills"] = {
+                ["Z"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["X"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["C"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["V"] = {["Enable"] = false, ["HoldTime"] = 0}
+            }
+        },
+        ["Blox Fruit"] = {
+            ["Enable"] = false,
+            ["Delay"] = 1.5,
+            ["Skills"] = {
+                ["Z"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["X"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["C"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["V"] = {["Enable"] = true, ["HoldTime"] = 0.25},
+                ["F"] = {["Enable"] = false, ["HoldTime"] = 0}
+            }
+        },
+        ["Sword"] = {
+            ["Enable"] = false,
+            ["Delay"] = 1,
+            ["Skills"] = {
+                ["Z"] = {["Enable"] = true, ["HoldTime"] = 0.25},
+                ["X"] = {["Enable"] = true, ["HoldTime"] = 0.7}
+            } 
+        },
+        ["Gun"] = {
+            ["Enable"] = true,          
+            ["Delay"] = 1,
+            ["Skills"] = {
+                ["Z"] = {["Enable"] = true, ["HoldTime"] = 0},
+                ["X"] = {["Enable"] = true, ["HoldTime"] = 0}
+            } 
+        }
+    }
+}
+
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
+-- Ui
+getgenv().troi = "None or not update"
+spawn(function()
+    function MainWindow()
+        function INIT()
+            -- // GUI TO LUA \\ --
+    
+            -- // INSTANCES: 17 | SCRIPTS: 0 | MODULES: 0 \\ --
+    
+            local UI = {}
+            local ts = game:GetService("TweenService")
+            -- // StarterGui.ScreenGui \\ --
+            UI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+            UI["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
+    
+            -- // StarterGui.ScreenGui.Frame \\ --
+            UI["2"] = Instance.new("Frame", UI["1"])
+            UI["2"]["BorderSizePixel"] = 0
+            UI["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+            UI["2"]["Size"] = UDim2.new(0, 1262, 0, 826)
+            UI["2"]["Position"] = UDim2.new(0.5, 0, 0.4997, 0)
+            UI["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["2"]["BackgroundTransparency"] = 1
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup \\ --
+            UI["3"] = Instance.new("CanvasGroup", UI["2"])
+            UI["3"]["BorderSizePixel"] = 0
+            UI["3"]["BackgroundColor3"] = Color3.fromRGB(32, 32, 32)
+            UI["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+            UI["3"]["Size"] = UDim2.new(0, 388, 0, 250)
+            UI["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+            UI["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["3"].Draggable = true
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.UICorner \\ --
+            UI["4"] = Instance.new("UICorner", UI["3"])
+            UI["4"]["CornerRadius"] = UDim.new(0, 20)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.UIStroke \\ --
+            UI["5"] = Instance.new("UIStroke", UI["3"])
+            UI["5"]["Color"] = Color3.fromRGB(0, 116, 255)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.Frame \\ --
+            UI["6"] = Instance.new("Frame", UI["3"])
+            UI["6"]["BorderSizePixel"] = 0
+            UI["6"]["BackgroundColor3"] = Color3.fromRGB(46, 46, 46)
+            UI["6"]["Size"] = UDim2.new(0, 388, 0, 47)
+            UI["6"]["Position"] = UDim2.new(0, 0, 0.812, 0)
+            UI["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.Frame.Frame \\ --
+            UI["7"] = Instance.new("Frame", UI["6"])
+            UI["7"]["BorderSizePixel"] = 0
+            UI["7"]["BackgroundColor3"] = Color3.fromRGB(92, 92, 92)
+            UI["7"]["AnchorPoint"] = Vector2.new(0, 1)
+            UI["7"]["Size"] = UDim2.new(0, 388, 0, 2)
+            UI["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.Frame.ImageLabel \\ --
+            UI["8"] = Instance.new("ImageLabel", UI["6"])
+            UI["8"]["BorderSizePixel"] = 0
+            UI["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["8"]["Image"] = [[https://www.roblox.com/headshot-thumbnail/image?userId=]] .. tostring(game.Players.LocalPlayer.UserId) .. "&width=420&height=420&format=png"
+            UI["8"]["Size"] = UDim2.new(0, 35, 0, 35)
+            UI["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["8"]["BackgroundTransparency"] = 1
+            UI["8"]["Position"] = UDim2.new(0.04897, 0, 0.12766, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.Frame.ImageLabel.UICorner \\ --
+            UI["9"] = Instance.new("UICorner", UI["8"])
+    
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.Frame.TextLabel \\ --
+            UI["a"] = Instance.new("TextLabel", UI["6"])
+            UI["a"]["BorderSizePixel"] = 0
+            UI["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["a"]["TextSize"] = 15
+            UI["a"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+            UI["a"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["a"]["BackgroundTransparency"] = 1
+            UI["a"]["Size"] = UDim2.new(0, 299, 0, 28)
+            UI["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["a"]["Text"] = [[Player#21313 - Shinichi Hub | Auto Bounty]]
+            UI["a"]["Position"] = UDim2.new(0.18041, 0, 0.19149, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.data \\ --
+            UI["b"] = Instance.new("Folder", UI["3"])
+            UI["b"]["Name"] = [[data]]
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.data.TextLabel \\ --
+            UI["c"] = Instance.new("TextLabel", UI["b"])
+            UI["c"]["BorderSizePixel"] = 0
+            UI["c"]["TextXAlignment"] = Enum.TextXAlignment.Left
+            UI["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["c"]["TextSize"] = 16
+            UI["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+            UI["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["c"]["BackgroundTransparency"] = 1
+            UI["c"]["Size"] = UDim2.new(0, 350, 0, 35)
+            UI["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["c"]["Text"] = [[Bounty: 123435675]]
+            UI["c"]["Position"] = UDim2.new(0.04897, 0, 0.1, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.data.TextLabel \\ --
+            UI["d"] = Instance.new("TextLabel", UI["b"])
+            UI["d"]["BorderSizePixel"] = 0
+            UI["d"]["TextXAlignment"] = Enum.TextXAlignment.Left
+            UI["d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["d"]["TextSize"] = 16
+            UI["d"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+            UI["d"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["d"]["BackgroundTransparency"] = 1
+            UI["d"]["Size"] = UDim2.new(0, 350, 0, 35)
+            UI["d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["d"]["Text"] = [[Bounty Earned: 123456]]
+            UI["d"]["Position"] = UDim2.new(0.04897, 0, 0.24, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.data.TextLabel \\ --
+            UI["e"] = Instance.new("TextLabel", UI["b"])
+            UI["e"]["BorderSizePixel"] = 0
+            UI["e"]["TextXAlignment"] = Enum.TextXAlignment.Left
+            UI["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["e"]["TextSize"] = 16
+            UI["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+            UI["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["e"]["BackgroundTransparency"] = 1
+            UI["e"]["Size"] = UDim2.new(0, 350, 0, 35)
+            UI["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["e"]["Text"] = [[Is Targeting: Player#123]]
+            UI["e"]["Position"] = UDim2.new(0.04897, 0, 0.38, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.CanvasGroup.data.TextLabel \\ --
+            UI["f"] = Instance.new("TextLabel", UI["b"])
+            UI["f"]["BorderSizePixel"] = 0
+            UI["f"]["TextXAlignment"] = Enum.TextXAlignment.Left
+            UI["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["f"]["TextSize"] = 16
+            UI["f"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+            UI["f"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["f"]["BackgroundTransparency"] = 1
+            UI["f"]["Size"] = UDim2.new(0, 350, 0, 35)
+            UI["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["f"]["Text"] = [[Time: 1233456s]]
+            UI["f"]["Position"] = UDim2.new(0.04897, 0, 0.52, 0)
+    
+            -- // StarterGui.ScreenGui.Frame.Toggle \\ --
+            UI["10"] = Instance.new("ImageButton", UI["2"])
+            UI["10"]["BorderSizePixel"] = 0
+            UI["10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+            UI["10"]["Image"] = [[http://www.roblox.com/asset/?id=78774998900413]]
+            UI["10"]["Size"] = UDim2.new(0, 40, 0, 40)
+            UI["10"]["Name"] = [[Toggle]]
+            UI["10"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+            UI["10"]["Position"] = UDim2.new(0.25357, 0, 0.33172, 0)
+            UI["10"].Draggable = true
+            -- // StarterGui.ScreenGui.Frame.Toggle.UICorner \\ --
+            UI["11"] = Instance.new("UICorner", UI["10"])
+            UI["11"]["CornerRadius"] = UDim.new(0, 15)
+            _G.ISTOGGLING = false
+            local IsToggle = UI["3"].Visible
+            UI["10"].MouseButton1Down:Connect(function()
+                if not _G.ISTOGGLING then
+                    _G.ISTOGGLING = true
+                    if IsToggle then
+                        local troi = ts:Create(UI["3"], TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
+                            Size = UDim2.new(0,0,0,0)
+                        })
+                        troi:Play()
+                        troi.Completed:Wait()
+                        UI["3"].Visible = false
+                    else
+                        UI["3"].Visible = true
+                        local troi = ts:Create(UI["3"], TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
+                            Size = UDim2.new(0, 388, 0, 250)
+                        })
+                        troi:Play()
+                        troi.Completed:Wait()
+                    end
+                    IsToggle = not IsToggle
+                    _G.ISTOGGLING = false
+                end
+            end)
+    
+            return setmetatable({}, {
+                __index = function(ar, i)
+                    if i == "bt" then
+                        return function(v)
+                            UI["c"]["Text"] = "Bounty: " .. tostring(v)
+                        end
+                    elseif i == "bte" then
+                        return function(v)
+                            UI["d"].Text = "Bounty Earned: " .. tostring(v)
+                        end
+                    elseif i == "tg" then
+                        return function(a)
+                            UI["e"].Text = "Is Targeting: " .. tostring(a)
+                        end
+                    elseif i == "t" then
+                        return function(troi)
+                            UI["f"].Text = "Time: " .. tostring(troi)
+                        end
+                    end
+                end,
+            })
+        end
+        local Window = INIT()
+        local now = tick()
+        if not isfolder("Shinichi Hub | Auto Bounty") then
+            makefolder("Shinichi Hub | Auto Bounty")
+        end
+        if not isfile("./Shinichi Hub | Auto Bounty/data_save.json") then
+            writefile("./Shinichi Hub | Auto Bounty/data_save.json", "{}")
+        end
+        local _i = game:GetService("HttpService")
+        local o_ = readfile("./Shinichi Hub | Auto Bounty/data_save.json")
+        local _o = _i:JSONDecode(dt)
+        local _v = {
+            ["bounty"] = {
+                ["set"] = function(v)
+                    local dt = readfile("./Shinichi Hub | Auto Bounty/data_save.json")
+                    local troi = _i:JSONDecode(dt)
+                    troi["data"]["bountyearned"] = v
+                    writefile("./Shinichi Hub | Auto Bounty/data_save.json", _i:JSONEncode(troi))
+                end,
+                ["get"] = function()
+                    local dt = readfile("./Shinichi Hub | Auto Bounty/data_save.json")
+                    local troi = _i:JSONDecode(dt)
+                    return troi["data"]["bountyearned"]
+                end
+            },
+            ["time"] = {
+                ["get"] = function(v)
+                    local dt = readfile("./Shinichi Hub | Auto Bounty/data_save.json")
+                    local troi = _i:JSONDecode(dt)
+                    troi["data"]["time"] = v
+                    writefile("./Shinichi Hub | Auto Bounty/data_save.json", _i:JSONEncode(troi))
+                end,
+                ["set"] = function()
+                    local dt = readfile("./Shinichi Hub | Auto Bounty/data_save.json")
+                    local troi = _i:JSONDecode(dt)
+                    return troi["data"]["time"]
+                end
+            }
+        }
+        if _o["data"] and _o["data"]["bountyearned"] and _o["data"]["time"] then
+            local ge = 0
+            spawn(function()
+                while wait(0.1) do
+                    if ge ~= game.Players.LocalPlayer.leaderstats["Bounty/Honor"].Value then
+                        local gg = _v["bounty"]["get"]()
+                        _v["bounty"]["set"](gg + (game.Players.LocalPlayer.leaderstats["Bounty/Honor"].Value - ge))
+                        ge = game.Players.LocalPlayer.leaderstats["Bounty/Honor"].Value
+                    end
+                end
+            end)
+        else
+            local gg = {
+                ["data"] = {
+                    ["bountyearned"] = 0,
+                    ["time"] = 0
+                }
+            }
+            writefile("./Shinichi Hub | Auto Bounty/data_save.json", _i:JSONEncode(gg))
+        end
+
+        spawn(function()
+            while wait() do
+                Window.t(math.floor(tostring(tick() - now)) .. "s")
+                Window.bte(_v["bounty"]["get"]())
+                Window.bt(game.Players.LocalPlayer.leaderstats["Bounty/Honor"].Value)
+                Window.tg(getgenv().troi or "None or Not Update")
+            end
+        end)
+    end
+    local UI = {}
+    local ts = game:GetService("TweenService")
+    local prod = game.Workspace.Camera.ViewportSize
+    -- // StarterGui.ScreenGui \\ --
+    UI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+    UI["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
+    
+    -- // StarterGui.ScreenGui.Frame \\ --
+    UI["2"] = Instance.new("Frame", UI["1"])
+    UI["2"]["ZIndex"] = 0
+    UI["2"]["BorderSizePixel"] = 0
+    UI["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+    UI["2"]["Size"] = UDim2.new(0, 1262, 0, 826)
+    UI["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+    UI["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["2"]["BackgroundTransparency"] = 1
+    local vv = UI["2"]["Position"]
+    UI["2"]["Position"] = UDim2.new(0, prod.X / 2 - vv.X.Offset / 2, 0, prod.Y / 2 - vv.Y.Offset / 2 - 50)
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup \\ --
+    UI["3"] = Instance.new("CanvasGroup", UI["2"])
+    UI["3"]["BorderSizePixel"] = 0
+    UI["3"]["BackgroundColor3"] = Color3.fromRGB(30, 30, 30)
+    UI["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+    UI["3"]["Size"] = UDim2.new(0, 529, 0, 365)
+    UI["3"]["Position"] = UDim2.new(0.49921, 0, 0.49939, 0)
+    UI["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.UICorner \\ --
+    UI["4"] = Instance.new("UICorner", UI["3"])
+    UI["4"]["CornerRadius"] = UDim.new(0, 30)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.ImageLabel \\ --
+    UI["5"] = Instance.new("ImageLabel", UI["3"])
+    UI["5"]["BorderSizePixel"] = 0
+    UI["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["5"]["Image"] = [[http://www.roblox.com/asset/?id=117909667563553]]
+    UI["5"]["Size"] = UDim2.new(0, 375, 0, 313)
+    UI["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["5"]["BackgroundTransparency"] = 1
+    UI["5"]["Position"] = UDim2.new(0.39698, 0, 0, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel \\ --
+    UI["6"] = Instance.new("TextLabel", UI["3"])
+    UI["6"]["BorderSizePixel"] = 0
+    UI["6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["6"]["TextSize"] = 60
+    UI["6"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI["6"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["6"]["BackgroundTransparency"] = 1
+    UI["6"]["Size"] = UDim2.new(0, 324, 0, 104)
+    UI["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["6"]["Text"] = [[Welcome]]
+    UI["6"]["Position"] = UDim2.new(0, 0, 0.06301, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel.TextLabel \\ --
+    UI["7"] = Instance.new("TextLabel", UI["6"])
+    UI["7"]["BorderSizePixel"] = 0
+    UI["7"]["TextXAlignment"] = Enum.TextXAlignment.Right
+    UI["7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["7"]["TextSize"] = 30
+    UI["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI["7"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["7"]["BackgroundTransparency"] = 1
+    UI["7"]["Size"] = UDim2.new(0, 200, 0, 50)
+    UI["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["7"]["Text"] = game.Players.LocalPlayer.DisplayName
+    UI["7"]["Position"] = UDim2.new(0.34568, 0, 0.76923, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel \\ --
+    UI["8"] = Instance.new("TextLabel", UI["3"])
+    UI["8"]["BorderSizePixel"] = 0
+    UI["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["8"]["TextSize"] = 30
+    UI["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/Bangers.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI["8"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["8"]["BackgroundTransparency"] = 1
+    UI["8"]["Size"] = UDim2.new(0, 200, 0, 50)
+    UI["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["8"]["Text"] = [[Next Gen]]
+    UI["8"]["Position"] = UDim2.new(0.53875, 0, 0.63562, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel \\ --
+    UI["9"] = Instance.new("TextLabel", UI["3"])
+    UI["9"]["BorderSizePixel"] = 0
+    UI["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["9"]["TextSize"] = 50
+    UI["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Bangers.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI["9"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["9"]["BackgroundTransparency"] = 1
+    UI["9"]["Size"] = UDim2.new(0, 200, 0, 50)
+    UI["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["9"]["Text"] = [[BEST SCRIPT]]
+    UI["9"]["Position"] = UDim2.new(0.53875, 0, 0.54521, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel.UIStroke \\ --
+    UI["a"] = Instance.new("UIStroke", UI["9"])
+    
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel.UIGradient \\ --
+    UI["b"] = Instance.new("UIGradient", UI["9"])
+    UI["b"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(239, 0, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(6, 81, 255))}
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.TextLabel \\ --
+    UI["c"] = Instance.new("TextLabel", UI["3"])
+    UI["c"]["BorderSizePixel"] = 0
+    UI["c"]["TextXAlignment"] = Enum.TextXAlignment.Left
+    UI["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["c"]["TextSize"] = 40
+    UI["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/LuckiestGuy.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["c"]["BackgroundTransparency"] = 1
+    UI["c"]["Size"] = UDim2.new(0, 146, 0, 50)
+    UI["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["c"]["Text"] = [[To ]]
+    UI["c"]["Position"] = UDim2.new(0.571, 0,0.499, 0)
+    UI["c"].AnchorPoint = Vector2.new(0.5, 0.5)
+    
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.Control \\ --
+    UI["d"] = Instance.new("Folder", UI["3"])
+    UI["d"]["Name"] = [[Control]]
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.Control.TextLabel \\ --
+    UI["e"] = Instance.new("TextButton", UI["d"])
+    UI["e"]["BorderSizePixel"] = 0
+    UI["e"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["e"]["TextSize"] = 14
+    UI["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+    UI["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["e"]["Size"] = UDim2.new(0, 218, 0, 50)
+    UI["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["e"]["Text"] = [[Click Here To Coninue]]
+    UI["e"]["Position"] = UDim2.new(0.0775, 0, 0.66301, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.Control.TextLabel.UICorner \\ --
+    UI["f"] = Instance.new("UICorner", UI["e"])
+    UI["f"]["CornerRadius"] = UDim.new(1, 0)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.Control.TextLabel.UIStroke \\ --
+    UI["10"] = Instance.new("UIStroke", UI["e"])
+    UI["10"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border
+    UI["10"]["Thickness"] = 2
+    UI["10"]["Color"] = Color3.fromRGB(255, 255, 255)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.Control.TextLabel.UIStroke.UIGradient \\ --
+    UI["11"] = Instance.new("UIGradient", UI["10"])
+    UI["11"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(226, 0, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(2, 49, 255))}
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.UIStroke \\ --
+    UI["12"] = Instance.new("UIStroke", UI["3"])
+    UI["12"]["Color"] = Color3.fromRGB(255, 255, 255)
+    
+    -- // StarterGui.ScreenGui.Frame.CanvasGroup.message \\ --
+    UI["13"] = Instance.new("TextLabel", UI["3"])
+    UI["13"]["TextWrapped"] = true
+    UI["13"]["BorderSizePixel"] = 0
+    UI["13"]["TextXAlignment"] = Enum.TextXAlignment.Left
+    UI["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["13"]["TextSize"] = 14
+    UI["13"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    UI["13"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+    UI["13"]["BackgroundTransparency"] = 1
+    UI["13"]["Size"] = UDim2.new(0, 475, 0, 50)
+    UI["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+    UI["13"]["Text"] = [[Message: Click to continue or Will auto Start after 5 second.]]
+    UI["13"]["Name"] = [[message]]
+    UI["13"]["Position"] = UDim2.new(0.05104, 0, 0.83288, 0)
+    
+    
+    for i, v in pairs(UI["1"]:GetDescendants()) do
+        if v:IsA("TextButton") then
+            v.AutoButtonColor = false
+        end
+    end
+    _G.OKOKOKO = false
+    _G.ISANIMATIONSTART = false
+    _G.OITROI = false
+    _G.TROIDAT = false
+    function START(thua)
+        spawn(function()
+            if not _G.OKOKOKO then
+                _G.OKOKOKO = true
+                local a = "Thank for using Shinichi Hub!"
+                UI["e"].Text = ""
+                for i = 1, #a do
+                    UI["e"].Text = UI["e"].Text .. string.sub(a, i, i)
+                    wait(0.05)
+                end
+                _G.OKOKOKO = false
+            end
+        end)
+        if not _G.ISANIMATIONSTART  then
+            _G.ISANIMATIONSTART = true
+            
+            -- {-0.612, 0},{0.074, 0}
+            local welcome = ts:Create(UI["6"], TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                Position = UDim2.new(-0.612, 0,0.074, 0)
+            })
+            welcome:Play()
+            -- {1.051, 0},{0.545, 0}
+            local bestscript = ts:Create(UI["9"], TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                Position = UDim2.new(1.051, 0,0.545, 0)
+            })
+            bestscript:Play()
+            local to = ts:Create(UI["c"], TweenInfo.new(2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut), {
+                TextSize = 0
+            })
+            to:Play()
+            to.Completed:Connect(function()
+                UI["c"]:Destroy()
+            end)
+            spawn(function()
+                if not _G.OITROI then
+                    _G.OITROI = true
+                    for i = 1, #UI["8"].Text do
+                        UI["8"].Text = string.sub(UI["8"].Text, 1, #UI["8"].Text - i)
+                        wait(0.1)
+                    end
+                    _G.OITROI = false
+                end
+            end)
+            local shinichi = ts:Create(UI["5"], TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                ImageTransparency = 1
+            })
+            shinichi:Play()
+            spawn(function()
+                if not _G.TROIDAT then
+                    _G.TROIDAT = true
+                    local a = "Message: Thank for using Shinichi Hub!"
+                    UI["13"].Text = ""
+                    for i = 1, #a do
+                        UI["13"].Text = UI["13"].Text .. string.sub(a, i, i)
+                        wait(0.05)
+                    end
+                    _G.TROIDAT = false
+                end
+            end)
+            wait(2)
+            local troi = ts:Create(UI["3"], TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
+                Size = UDim2.new(0, 0,0,0)
+            })
+            troi:Play()
+            troi.Completed:Wait()
+            UI["1"]:Destroy()
+            pcall(thua)
+        end
+    end
+    UI["e"].MouseButton1Down:Connect(function()
+        START(function()
+            MainWindow()
+        end)
+    end)
+    local troi = 5
+    wait(1)
+    for i = 1, 5 do
+        if _G.ISANIMATIONSTART then
+            break
+        end
+        troi = troi - 1
+        UI["13"]["Text"] = string.format("Message: Click to continue or Will auto Start after %s second.", tostring(troi))
+        wait(1)
+    end
+    if not _G.ISANIMATIONSTART then
+        START(function()
+            MainWindow()
+        end)
+    end
+end)
+
+
+--// nill
+local plrs = game:GetService("Players")
+local lp = plrs.LocalPlayer
+local rs = game.ReplicatedStorage
+local player = game.Players.LocalPlayer
+
+--// Join Team
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer.PlayerGui
+
+if PlayerGui:FindFirstChild("Main") and PlayerGui.Main:FindFirstChild("ChooseTeam") and getgenv().Config["AutoChooseTeam"] then
+    while not LocalPlayer.Team and game:IsLoaded() do
+        wait()
+        local MainGui = PlayerGui:WaitForChild("Main")
+        if MainGui.ChooseTeam.Visible then
+            local team = getgenv().Config["Team"] == "Marines" and "Marines" or "Pirates"
+            ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", team)
+        end
+    end
+end
+
+--// Lock
+if getgenv().Config["Auto Team"]["Enable Lock Bounty"] and not (lp.leaderstats["Bounty/Honor"].Value > tonumber(getgenv().Config["Auto Team"]["Lock Bounty"][1])) or not (lp.leaderstats["Bounty/Honor"].Value < tonumber(getgenv().Config["Auto Team"]["Lock Bounty"][2])) then 
+    lp:Kick("Lock Bounty")
+end
+
+function Hop()
+    function bQ(v)
+        if v.Name == "ErrorPrompt" then
+            if v.Visible then
+                if v.TitleFrame.ErrorTitle.Text == "Teleport Failed" then
+                    v.Visible = false
+                end
+            end
+            v:GetPropertyChangedSignal("Visible"):Connect(function()
+                if v.Visible then
+                    if v.TitleFrame.ErrorTitle.Text == "Teleport Failed" then
+                        v.Visible = false
+                    end
+                end
+            end)
+        end
+    end
+
+    for i, v in game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren() do
+        bQ(v) 
+    end
+    game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(bQ)
+    while player:GetAttribute("InCombat") do
+        wt()
+    end
+
+    while wt() do
+        randomy = math.random(90000, 100000)
+        if Config["Custom Y Run"].Enabled then
+            randomy = Config["Custom Y Run"]["Y Run"]
+        end
+        
+        to(CFrame.new(-12463.8740234375, randomy, -7523.77392578125))
+        
+        if not player:GetAttribute("InCombat") then
+            for r = 1, math.huge do
+                if player:GetAttribute("InCombat") then
+                    break
+                end
+                
+                to(CFrame.new(-12463.8740234375, randomy, -7523.77392578125))
+                game.Players.LocalPlayer.PlayerGui.ServerBrowser.Frame.Filters.SearchRegion.TextBox.Text = "Singapore"
+                for k, v in inv(rs.__ServerBrowser, {r}) do
+                    if k ~= game.JobId and v["Count"] <= 11 then
+                        inv(rs.__ServerBrowser, {"teleport", k})
+                    end
+                end
+                wt()
+            end
+        end
+    end
+end
+
+
+function ServerHop()
+    local Http = game:GetService("HttpService")
+    local TPS = game:GetService("TeleportService")
+    local Api = "https://games.roblox.com/v1/games/"
+    local _place = game.PlaceId
+    local _servers = Api .. _place .. "/servers/Public?sortOrder=Asc&limit=100"
+    
+    local function ListServers(cursor)
+        local Raw = game:HttpGet(_servers .. (cursor and "&cursor=" .. cursor or ""))
+        return Http:JSONDecode(Raw)
+    end
+    
+    local Server, Next
+    repeat
+        wait()
+        local Servers = ListServers(Next)
+        Server = Servers.data[1]
+        Next = Servers.nextPageCursor
+    until Server
+    TPS:TeleportToPlaceInstance(_place, Server.id, game.Players.LocalPlayer)
+end
+
+getgenv().Bounty = {
+    Targ = nil,
+    Checked = {},
+    Hop = false,
+    CanUseWeapon = false,
+    CanUseSkill = false,
+    UsingSkill = false,
+    WeaponUsing = "",
+    ToolTipUsing = "Melee",
+    CFrameTarget = CFrame.new(Vector3.new(0,0,0)),
+    Digit = CFrame.new(Vector3.new(0,0,0)),
+}
+--- Tween / Bypass
+local w = game.PlaceId
+if w == 2753915549 then
+    distbyp = 1500
+elseif w == 4442272183 then
+    distbyp = 3500
+elseif w == 7449423635 then
+    distbyp = 6000
+end
+function getPortal(check2)
+    local check3 = check2.Position
+    local w = game.PlaceId
+    if w == 2753915549 then
+        gQ = {
+            Vector3.new(-7894.6201171875, 5545.49169921875, -380.246346191406),
+            Vector3.new(-4607.82275390625, 872.5422973632812, -1667.556884765625),
+            Vector3.new(61163.8515625, 11.759522438049316, 1819.7841796875),
+            Vector3.new(3876.280517578125, 35.10614013671875, -1939.3201904296875)
+        }
+    elseif w == 4442272183 then
+        gQ = {
+            Vector3.new(-288.46246337890625, 306.130615234375, 597.9988403320312),
+            Vector3.new(2284.912109375, 15.152046203613281, 905.48291015625),
+            Vector3.new(923.21252441406, 126.9760055542, 32852.83203125),
+            Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422)
+        }
+    elseif w == 7449423635 then
+        gQ = {
+            Vector3.new(-5058.77490234375, 314.5155029296875, -3155.88330078125),
+            Vector3.new(5756.83740234375, 610.4240112304688, -253.9253692626953),
+            Vector3.new(-12463.8740234375, 374.9144592285156, -7523.77392578125),
+            Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586),
+            Vector3.new(-11993.580078125, 334.7812805175781, -8844.1826171875),
+            Vector3.new(5314.58203125, 25.419387817382812, -125.94227600097656)
+        }
+    end
+    local aM, aN = Vector3.new(0,0,0), math.huge
+
+    for _, aL in pairs(gQ) do
+        if (aL-check3).Magnitude < aN and aM ~= aL then
+            aM, aN = aL,  (aL-check3).Magnitude
+        end 
+    end
+    return aM
+end  
+function getSpawn(wtf)
+    local a, b = nil, math.huge
+    for i,v in pairs(game.Workspace._WorldOrigin.PlayerSpawns:FindFirstChild(tostring(lp.Team)):GetChildren()) do
+        if tostring(v) ~= "Leviathan" and (v:GetModelCFrame().Position-wtf.Position).Magnitude < b then
+            a = v:GetModelCFrame()
+            b = (v:GetModelCFrame().Position-wtf.Position).Magnitude
+        end
+    end
+    return a
+end
+function request(check1)
+    game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack({"requestEntrance", check1}))
+end
+function calcpos(I, II) 
+    if not II then 
+        II = game.Players.LocalPlayer.Character.PrimaryPart.CFrame 
+    end 
+    return (Vector3.new(I.X, 0, I.Z)-Vector3.new(II.X, 0, II.Z)).Magnitude 
+end 
+function to(Pos)
+    if not Pos then return end 
+    for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if v:IsA("BasePart") then
+            v.CanCollide = false    
+        end
+    end
+    if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Vang") then
+        local ngu = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+        ngu.Name = "Vang"
+        ngu.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+        ngu.Velocity = Vector3.new(0,0,0)
+    end 
+    Portal = getPortal(Pos) 
+    Spawn = getSpawn(Pos) 
+    for mm = 0,3,1 do 
+        if getSpawn(Pos) ~= Spawn then 
+            return 
+        end 
+    end 
+    MyCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    Distance = calcpos(MyCFrame, Pos)
+    if Distance > calcpos(Portal, Pos) then
+    return request(Portal)
+end
+if Spawn then 
+    Pos0 = calcpos(Spawn, Pos)
+    if Pos0 < Distance and calcpos(MyCFrame, Spawn) > Pos0 then
+    end
+end
+    if Distance < 500 then
+        Speed = 375
+    elseif Distance < 1000 then
+        Speed = 375
+    elseif Distance >= 1000 then
+        Speed = 375
+    end
+    if Speed ~= nil then
+        tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance / Speed, Enum.EasingStyle.Linear),{CFrame = Pos})
+        tween:Play() 
+    end
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, Pos.Y, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+end
+--// Equip
+function equip(tool)
+    for _, v in lp.Backpack:GetChildren() do 
+        if v:IsA("Tool") and v.ToolTip == tool then
+            wfh(lp):EquipTool(v)
+            return v.Name
+        end 
+    end 
+    return false
+end
+--// Use Skill
+function down(key, hold)
+    pcall(function()
+        if not ffc(lp.Character, Bounty.WeaponUsing) then
+            equip(Bounty.ToolTipUsing)
+        end
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, key, false, game)
+        local spam = tick()
+        repeat wt()
+            if not ffc(lp.Character, Bounty.WeaponUsing) then
+                equip(Bounty.ToolTipUsing)
+            end
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, key, false, game)
+        until (tick() - spam) >= hold or not (Bounty.CanUseWeapon and Bounty.CanUseSkill) or not (ffc(lp.Character, "Busy") and lp.Character.Busy.Value)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, key, false, game)
+    end) 
+end
+--// Skill
+function cd(I, II) 
+    if not II then II = lp.Character.PrimaryPart.CFrame end
+    return (Vector3.new(I.X, 0, I.Z) - Vector3.new(II.X, 0, II.Z)).Magnitude 
+end 
+function int(num)
+    if not num then return end
+    return tonumber(num)
+end
+function str(string)
+    if not string then return end
+    return tostring(string)
+end
+function wt(num)
+    if not num then return task.wait() end
+    return task.wait(int(num))
+end
+function ffc(obj, child)
+    if not obj or not child then return end
+    return obj:FindFirstChild(str(child))
+end
+function wfc(obj, child)
+    if not obj or not child then return end
+    return obj:WaitForChild(str(child), 9)
+end
+function wfh(mob)
+    if not mob then return end
+    return wfc(mob.Character, "Humanoid")
+end
+function wfhrp(mob)
+    if not mob then return end
+    return wfc(mob.Character, "HumanoidRootPart")
+end
+function checkmon(mob)
+    if not mob then return end
+    if mob and ffc(mob.Character, "Humanoid") and mob.Character.Humanoid.Health > 0 and ffc(mob.Character, "HumanoidRootPart") then
+        return true
+    end
+    return
+end
+function inv(obj, child)
+    if not obj or not child then return end
+    return obj:InvokeServer(unpack(child))
+end
+
+function checkfruit(targcheck)
+    local pdf = targcheck and ffc(targcheck, "Data") and ffc(targcheck.Data, 'DevilFruit') and targcheck.Data.DevilFruit.Value
+    for _, v in Config["Skip"]["Fruit"]["List"] do 
+        if str(v) == str(pdf) then 
+            return true
+        end
+    end
+    return false
+end
+
+function findtarget()
+    table.insert(Bounty.Checked, Bounty.Targ)
+    Bounty.CanUseWeapon = false
+    Bounty.CanUseSkill = false
+    if Config["Chat Kill"]["Enabled"] then
+        ffc(wfc(rs, "DefaultChatSystemChatEvents"), "SayMessageRequest"):FireServer(Config["Chat Kill"]["Message"][math.random(1, #Config["Chat Kill"]["Message"])], "All")
+    end
+    if not Bounty.Hop then
+        a, b = nil, math.huge
+        for i, v in plrs:GetChildren() do
+            if v ~= lp and v ~= a and v.Team and string.find(str(v.Team.Name), "es") and not table.find(Bounty.Checked, v)
+            and (str(lp.Team.Name) == "Pirates" or str(v.Team.Name) == "Pirates") and math.abs(lp.Data.Level.Value - v.Data.Level.Value) < 600
+            and (not Config["Skip"]["Fruit"]["Enabled"] or not checkfruit(v)) 
+            and (not Config["Skip"]["V4"] or not (ffc(v.Backpack, "Awakening") or ffc(v.Character, "Awakening")))
+            and cd(getSpawn(wfhrp(v).CFrame), wfhrp(v).CFrame) <= 3000 and not ffc(v.Character, "TempSafeZone") and checkmon(v) then
+                a = v
+                b = cd(wfhrp(v).CFrame, wfhrp(lp).CFrame)
+            end
+        end
+        if a ~= nil then
+            Bounty.Targ = a
+            getgenv().troi = a.Name
+            return false
+        end
+    end
+    Bounty.Hop = true
+    Hop()
+    return false
+end
+
+function checknotify(msg, msg1)
+    msg1 = msg1 or ""
+    for i, v in pairs(lp.PlayerGui.Notifications:GetChildren()) do
+        if v and v.Text and string.find(string.lower(v.Text), string.lower(msg)) and string.find(string.lower(v.Text), string.lower(msg1)) then
+            v:Destroy()
+            return true
+        end
+    end
+    return false
+end
+
+function checkraid(target)
+    if ffc(workspace["_WorldOrigin"].Locations, "Island 1") then
+        if cd(wfhrp(target).CFrame, workspace["_WorldOrigin"].Locations["Island 1"].CFrame) < 3000 then 
+            return true 
+        end 
+    end 
+    return false
+end
+
+function checksafezone(pos)
+    for _, v in workspace._WorldOrigin.SafeZones:GetChildren() do
+        if cd(v.CFrame, pos) < (v.Mesh.Scale.Magnitude / 2) then
+            return true
+        end
+    end
+    return false
+end  
+
+local oldtarg = Bounty.Targ
+local oldtime = tick()
+local oldspamskill = tick()
+local startuse = false
+
+function checktarg()
+    if not checkmon(Bounty.Targ) then
+        return findtarget()
+    end
+    if checksafezone(wfhrp(Bounty.Targ).CFrame) then
+        return findtarget()
+    end
+    if checkraid(Bounty.Targ) then
+        return findtarget()
+    end
+    if Bounty.Targ == oldtarg then
+        if Bounty.UsingSkill and not startuse then
+            oldspamskill = tick()
+            startuse = true
+        end
+        if startuse and (tick() - oldspamskill) >= 3 and not (Bounty.Targ.Character:GetAttribute("InCombat") == 0 or Bounty.Targ.Character:GetAttribute("InCombat") == 1) then
+            return findtarget()
+        end
+    else
+        startuse = false
+        oldtarg = Bounty.Targ
+    end
+    return true
+end
+
+if not Bounty or not Bounty.CFrameTarget or not Bounty.Digit or not Bounty.Digit.Position then
+    warn("Shinichi Hub - Auto Bounty!")
+    return
+end
+
+local player = game.Players.LocalPlayer
+local Mouse = player:GetMouse()
+
+local PredictionAmount = 0.165 
+local SmoothnessAmount = 0.5
+
+local oldIndex
+oldIndex = hookmetamethod(game, "__index", newcclosure(function(self, Index)
+    if self == Mouse then
+        if type(Index) == "string" and Index:lower() == "hit" then
+            if Bounty.Targ and Bounty.Targ.Character then
+                local targetHRP = Bounty.Targ.Character:FindFirstChild("HumanoidRootPart")
+                if targetHRP then
+                    local predictedPos = targetHRP.Position + (targetHRP.Velocity * PredictionAmount)
+                    local smoothPos = targetHRP.Position:Lerp(predictedPos, SmoothnessAmount)
+                    return CFrame.new(smoothPos)
+                end
+            end
+            return Bounty.CFrameTarget or Mouse.Hit
+        end
+    end
+    return oldIndex(self, Index)
+end))
+
+spawn(function()
+    local mt = getrawmetatable(game)
+    local oldNamecall = mt.__namecall 
+    setreadonly(mt, false)
+    
+    mt.__namecall = newcclosure(function(...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if tostring(method) == "FireServer" then
+            if args[1] and tostring(args[1]) == "RemoteEvent" then
+                if args[2] and tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
+                    if Bounty.Targ and Bounty.Targ.Character then
+                        local targetHRP = Bounty.Targ.Character:FindFirstChild("HumanoidRootPart")
+                        if targetHRP then
+                            local predictedPos = targetHRP.Position + (targetHRP.Velocity * PredictionAmount)
+                            args[2] = predictedPos
+                            return oldNamecall(table.unpack(args))
+                        end
+                    end
+                    args[2] = Bounty.Digit.Position or args[2]
+                    return oldNamecall(table.unpack(args))
+                end
+            end
+        end
+        return oldNamecall(...)
+    end)
+    
+    setreadonly(mt, true)
+end)
+
+local oldtw = tick()
+spawn(function()
+    while wt() do
+        if checktarg() then
+            if (not (game.Players.LocalPlayer.Character:FindFirstChild("HasBuso"))) then
+                local rel = game.ReplicatedStorage
+                rel.Remotes.CommF_:InvokeServer("Buso")
+            end
+            if ffc(lp, "PlayerGui") and ffc(lp.PlayerGui, "ScreenGui") and ffc(lp.PlayerGui.ScreenGui, "ImageLabel") then
+            else
+                game:service("VirtualUser"):CaptureController()
+                game:service("VirtualUser"):SetKeyDown("0x65")
+                game:service("VirtualUser"):SetKeyUp("0x65")
+            end
+            if ffc(workspace._WorldOrigin.Locations, "Dimensional Rift") and (workspace._WorldOrigin.Locations["Dimensional Rift"].Position - wfhrp(lp).Position).Magnitude <= 1000 and (wfhrp(Bounty.Targ).Position - workspace._WorldOrigin.Locations["Dimensional Rift"].Position).Magnitude <= 1000 then
+                Bounty.CanUseWeapon = false
+                Bounty.CanUseSkill = false
+                to(CFrame.new(workspace._WorldOrigin.Locations["Dimensional Rift"].Position + Vector3.new(0, 190, 0)))
+            else
+                if tonumber(wfh(lp).Health) > 0 and (tonumber(wfh(lp).Health) < (Config["Panic % Health"][1] / 100 * tonumber(wfh(lp).MaxHealth)))
+                or (hide and tonumber(wfh(lp).Health) < (Config["Panic % Health"][2] / 100 * tonumber(wfh(lp).MaxHealth))) then
+                    Bounty.CanUseWeapon = false
+                    Bounty.CanUseSkill = false
+                    hide = true
+                    randomy = math.random(90000, 100000)
+                    if Config["Custom Y Run"].Enabled then
+                        randomy = Config["Custom Y Run"]["Y Run"]
+                    end
+                    to(CFrame.new(wfhrp(Bounty.Targ).Position + Vector3.new(0, randomy, 0)))
+                else
+                    hide = false
+                    Bounty.CFrameTarget = wfhrp(Bounty.Targ).CFrame
+                    if tick() - oldtw >= 0.05 then
+                        Bounty.Digit = Bounty.CFrameTarget + wfhrp(Bounty.Targ).Velocity / 2
+                    end
+                    if Bounty.Digit.Y < 5 then 
+                        Bounty.Digit = CFrame.new(Bounty.Digit.X, 4, Bounty.Digit.Z) 
+                    end 
+                    if (wfhrp(lp).Position - Bounty.CFrameTarget.Position).Magnitude <= 80 then
+                        if not ffc(Bounty.Targ.Character, "Busy") or not Bounty.Targ.Character.Busy.Value then
+                            Bounty.CanUseWeapon = true
+                            Bounty.CanUseSkill = true
+                        else
+                            Bounty.CanUseWeapon = true
+                            Bounty.CanUseSkill = false
+                        end
+                        if Config["Hunt Method"]["Use Move Predict"] then
+                            if Config["Hunt Method"]["Hit and Run"] then
+                                if Bounty.UsingSkill then
+                                    to(Bounty.Digit + Vector3.new(0, 4, 0))
+                                else
+                                    to(Bounty.Digit + Vector3.new(0, 30, 0))
+                                end
+                            else
+                                to(Bounty.Digit + Vector3.new(0, 4, 0))
+                            end
+                        else
+                            if Config["Hunt Method"]["Hit and Run"] then
+                                if Bounty.UsingSkill then
+                                    to(Bounty.CFrameTarget + Vector3.new(0, 4, 0))
+                                else
+                                    to(Bounty.CFrameTarget + Vector3.new(0, 30, 0))
+                                end
+                            else
+                                to(Bounty.CFrameTarget + Vector3.new(0, 4, 0))
+                            end
+                        end
+                    else
+                        to(Bounty.CFrameTarget + Vector3.new(0, 4, 0))
+                        Bounty.CanUseSkill = false
+                    end
+                end
+            end
+        end
+    end
+end)
+
+local races = { 
+    ["Human"] = "Last Resort", 
+    ["Mink"] = "Agility", 
+    ["Fishman"] = "Water Body", 
+    ["Skypea"] = "Heavenly Blood", 
+    ["Ghoul"] = "Heightened Senses",
+    ["Cyborg"] = "Energy Core",
+    ["Draco"] = "Primordial Reign"
+} 
+
+function transformAndDash()
+    if ffc(lp.Character, "RaceTransformed") and ffc(lp.Character, "RaceEnergy") and lp.Character.RaceEnergy.Value >= 1 and not lp.Character.RaceTransformed.Value then
+        down("Y", 0) 
+        repeat wt() until lp.Character.RaceTransformed.Value
+        if lp.Data.Race.Value == "Ghoul" or lp.Data.Race.Value == "Mink" then
+            while lp.Character.RaceTransformed.Value do
+                down("Q", 0)
+                wt()  
+            end
+        end
+    end
+end
+
+local killcount = 0
+local attackbool = false
+
+spawn(function()
+    while wait() do
+        transformAndDash()
+        if lp.PlayerGui.Main.PvpDisabled.Visible then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
+        end
+        if not game.Players:GetPlayers()[2] then
+            ServerHop()
+        end
+        if Bounty.CanUseWeapon then
+            if not ffc(lp.Character, races[lp.Data.Race.Value]) and inv(game.ReplicatedStorage.Remotes.CommF_, {"Wenlocktoad", "1"}) == -2 then
+                down("T", 0)
+            end
+            if Config["Spam All Skill On V4"].Enabled and ffc(lp.Character, "RaceTransformed") and ffc(lp.Character, "RaceTransformed").Value then
+                for _, v in Config["Spam All Skill On V4"]["Weapons"] do
+                    if Bounty.CanUseSkill then
+                        local EqWeapon = equip(v)
+                        Bounty.WeaponUsing = EqWeapon
+                        Bounty.ToolTipUsing = v
+                        Bounty.UsingSkill = true
+                        if EqWeapon and Config.Items[v].Enable then
+                            wait(Config.Items[v].Delay)
+                            for k, skill in pairs(Config.Items[v].Skills) do
+                                if Bounty.CanUseSkill and skill.Enable and ffc(lp.PlayerGui.Main.Skills[EqWeapon], k) 
+                                and ((lp.Data.Race.Value == "Ghoul" and ffc(lp.Character, "Heightened Senses") and lp.PlayerGui.Main.Skills[EqWeapon][k].Cooldown.Size.X.Scale <= 0.4) 
+                                or lp.PlayerGui.Main.Skills[EqWeapon][k].Cooldown.Size.X.Scale <= 0) then
+                                    down(k, skill.HoldTime)
+                                    repeat wait()
+                                    until ffc(lp.Character, "Busy") and not lp.Character.Busy.Value
+                                    killcount = killcount + 1
+                                end
+                            end
+                        end
+                        attackbool = true
+                        wait(0.25)
+                        Bounty.UsingSkill = false
+                        attackbool = false
+                    end
+                end
+            else
+                for _, v in Config.Items.Use do
+                    if Bounty.CanUseSkill then
+                        local EqWeapon = equip(v)
+                        Bounty.WeaponUsing = EqWeapon
+                        Bounty.ToolTipUsing = v
+                        Bounty.UsingSkill = true
+                        if EqWeapon and Config.Items[v].Enable then
+                            wait(Config.Items[v].Delay)
+                            for k, skill in pairs(Config.Items[v].Skills) do
+                                if Bounty.CanUseSkill and skill.Enable and ffc(lp.PlayerGui.Main.Skills[EqWeapon], k) 
+                                and ((lp.Data.Race.Value == "Ghoul" and ffc(lp.Character, "Heightened Senses") and lp.PlayerGui.Main.Skills[EqWeapon][k].Cooldown.Size.X.Scale <= 0.4) 
+                                or lp.PlayerGui.Main.Skills[EqWeapon][k].Cooldown.Size.X.Scale <= 0) then
+                                    down(k, skill.HoldTime)
+                                    repeat wait()
+                                    until ffc(lp.Character, "Busy") and not lp.Character.Busy.Value
+                                    killcount = killcount + 1
+                                end
+                            end
+                        end
+                        attackbool = true
+                        wait(0.25)
+                        Bounty.UsingSkill = false
+                        attackbool = false
+                    end
+                end
+            end
+        end
+    end
+end)
+
+local u5 = require(rs:WaitForChild("Notification"))
+        spawn(function()
+            while wt() do
+                u5.new("<Color=Yellow>Report Bugs Or Suggest Dms<Color=/>"):Display()
+                u5.new("<Color=Yellow>Discord :_shinichi.<Color=/>"):Display() 
+                u5.new("<Color=Yellow>ID Discord : 1274259604964114452<Color=/>"):Display() 
+                u5.new("<Color=Yellow>Server Discord : https://discord.gg/wWX6EAYzrA<Color=/>"):Display() 
+                u5.new("<Color=Yellow>Join Server Check Update<Color=/>"):Display() 
+                wt(20)
+            end
+        end)
+
+        function ClickDelay()
+            local VirtualInputManager = game:GetService("VirtualInputManager")
+            local targetPlayer = Bounty.Targ
+            if targetPlayer and targetPlayer.Character then
+                local targetHRP = targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if targetHRP then
+                    local screenPosition = workspace.CurrentCamera:WorldToViewportPoint(targetHRP.Position)
+                    VirtualInputManager:SendMouseButtonEvent(screenPosition.X, screenPosition.Y, 0, true, game, 0)
+                    task.wait()
+                    VirtualInputManager:SendMouseButtonEvent(screenPosition.X, screenPosition.Y, 0, false, game, 0)
+                end
+            end
+        end
+        
+        spawn(function()
+            while wt() do
+                if attackbool then
+                    wt(getgenv().Config["Misc"]["ClickDelay"])
+                    ClickDelay()
+                end
+            end
+        end)
+
+lp.Idled:connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wt(1)
+    game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+
+--// Random Fruit
+_G.RandomFruits = true
+if _G.RandomFruits then
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") and string.find(v.Name, "Fruit") then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v:GetAttribute("OriginalName"),v)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v:IsA("Tool") and string.find(v.Name, "Fruit") then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v:GetAttribute("OriginalName"),v)
+        end
+    end
+end
+
+CamFarm = getgenv().Config.Misc["Cam Farm"]
+if CamFarm == false then
+    game.Players.LocalPlayer.CameraMinZoomDistance = 127
+    game.Players.LocalPlayer.CameraMaxZoomDistance = 127
+    game.Players.LocalPlayer.CameraMaxZoomDistance = 127
+    game.Players.LocalPlayer.CameraMinZoomDistance = 0
+else
+    CamFarm = true
+    game.Players.LocalPlayer.CameraMinZoomDistance = 0
+    game.Players.LocalPlayer.CameraMaxZoomDistance = 0
+    game.Players.LocalPlayer.CameraMaxZoomDistance = 127
+    game.Players.LocalPlayer.CameraMinZoomDistance = 0
+end
+
+if getgenv().Config.Misc["Hide Map"] then
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj:IsA("BasePart") then
+            obj.Transparency = 1
+            obj.CanCollide = false
+            obj.CanTouch = false
+            obj.CanQuery = false
+            if obj:IsA("UnionOperation") or obj:IsA("MeshPart") then
+                obj.RenderFidelity = Enum.RenderFidelity.Precise
+            end
+        end
+    end
+    if workspace:FindFirstChild("Terrain") then
+        workspace.Terrain.WaterTransparency = 1
+    end
+end
+
+function CheckStun()
+    if game:GetService('Players').LocalPlayer.Character:FindFirstChild("Stun") then
+        return game:GetService('Players').LocalPlayer.Character.Stun.Value ~= 0
+    end
+    return false
+end
+
+CheckStun()
+
+if getgenv().Config.Misc["White Screen"] == true then
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
+elseif getgenv().Config.Misc["White Screen"] == false then
+    game:GetService("RunService"):Set3dRenderingEnabled(true)
+        end
+
+local playerGui = game:GetService("Players").LocalPlayer.PlayerGui.Main
+
+if getgenv().Config.Misc["HightLight Mode"] then
+    playerGui.Beli.Visible = false
+    playerGui.Energy.Visible = false
+    playerGui.StatsButton.Visible = false
+    playerGui.ShopButton.Visible = false
+    playerGui.Skills.Visible = false
+    playerGui.Level.Visible = false
+    playerGui.MenuButton.Visible = false
+    playerGui.Code.Visible = false
+    playerGui.Settings.Visible = false
+    playerGui.Mute.Visible = false
+    playerGui.CrewButton.Visible = false
+else
+    playerGui.Beli.Visible = true
+    playerGui.Energy.Visible = false
+    playerGui.StatsButton.Visible = false
+    playerGui.ShopButton.Visible = true
+    playerGui.Skills.Visible = true
+    playerGui.Level.Visible = true
+    playerGui.MenuButton.Visible = false
+    playerGui.Code.Visible = true
+    playerGui.Settings.Visible = true
+    playerGui.Mute.Visible = true
+    playerGui.CrewButton.Visible = true
+end
+
+--// Gui
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local DropShadowHolder = Instance.new("Frame")
+local DropShadow = Instance.new("ImageLabel")
+local ScriptName = Instance.new("TextLabel")
+local Logo = Instance.new("ImageLabel")
+local ClickSkipTarget = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "Main"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -106, 0, 10)
+MainFrame.Size = UDim2.new(0, 213, 0, 61)
+
+UICorner.Parent = MainFrame
+
+DropShadowHolder.Name = "DropShadowHolder"
+DropShadowHolder.Parent = MainFrame
+DropShadowHolder.BackgroundTransparency = 1.000
+DropShadowHolder.BorderSizePixel = 0
+DropShadowHolder.Size = UDim2.new(1, 0, 1, 0)
+DropShadowHolder.ZIndex = 0
+
+DropShadow.Name = "DropShadow"
+DropShadow.Parent = DropShadowHolder
+DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadow.BackgroundTransparency = 1.000
+DropShadow.BorderSizePixel = 0
+DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+DropShadow.Size = UDim2.new(1, 47, 1, 47)
+DropShadow.ZIndex = 0
+DropShadow.Image = "rbxassetid://78774998900413"
+DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+DropShadow.ImageTransparency = 0.500
+DropShadow.ScaleType = Enum.ScaleType.Slice
+DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+
+ScriptName.Name = "ScriptName"
+ScriptName.Parent = MainFrame
+ScriptName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScriptName.BackgroundTransparency = 1.000
+ScriptName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ScriptName.BorderSizePixel = 0
+ScriptName.Position = UDim2.new(0, 66, 0, 0)
+ScriptName.Size = UDim2.new(0, 80, 0, 36)
+ScriptName.Font = Enum.Font.FredokaOne
+ScriptName.Text = "Shinichi Hub | Auto Bounty"
+ScriptName.TextColor3 = Color3.fromRGB(178, 218, 255)
+ScriptName.TextSize = 17.000
+ScriptName.TextXAlignment = Enum.TextXAlignment.Left
+
+Logo.Name = "Logo"
+Logo.Parent = MainFrame
+Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Logo.BackgroundTransparency = 1.000
+Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Logo.BorderSizePixel = 0
+Logo.Position = UDim2.new(0.00469483575, 5, 0.0836065337, 0)
+Logo.Size = UDim2.new(0, 50, 0, 50)
+Logo.Image = "rbxassetid://78774998900413"
+
+ClickSkipTarget.Name = "ClickSkipTarget"
+ClickSkipTarget.Parent = MainFrame
+ClickSkipTarget.Active = false
+ClickSkipTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ClickSkipTarget.BackgroundTransparency = 1.000
+ClickSkipTarget.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ClickSkipTarget.BorderSizePixel = 0
+ClickSkipTarget.Position = UDim2.new(0, 66, 0, 23)
+ClickSkipTarget.Selectable = false
+ClickSkipTarget.Size = UDim2.new(0, 147, 0, 31)
+ClickSkipTarget.Font = Enum.Font.FredokaOne
+ClickSkipTarget.Text = "Click Here To Skip Target"
+ClickSkipTarget.TextColor3 = Color3.fromRGB(117, 117, 117)
+ClickSkipTarget.TextSize = 13.000
+ClickSkipTarget.TextXAlignment = Enum.TextXAlignment.Left
+
+--// Edit Gui
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+
+function MakeDraggable(topbarobject, object)
+	local Dragging = nil
+	local DragInput = nil
+	local DragStart = nil
+	local StartPosition = nil
+
+	function Update(input)
+		local Delta = input.Position - DragStart
+		local pos =
+			UDim2.new(
+				StartPosition.X.Scale,
+				StartPosition.X.Offset + Delta.X,
+				StartPosition.Y.Scale,
+				StartPosition.Y.Offset + Delta.Y
+			)
+		local Tween = TweenService:Create(object, TweenInfo.new(0.2), {Position = pos})
+		Tween:Play()
+	end
+
+	topbarobject.InputBegan:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				Dragging = true
+				DragStart = input.Position
+				StartPosition = object.Position
+
+				input.Changed:Connect(
+					function()
+						if input.UserInputState == Enum.UserInputState.End then
+							Dragging = false
+						end
+					end
+				)
+			end
+		end
+	)
+
+	topbarobject.InputChanged:Connect(
+		function(input)
+			if
+				input.UserInputType == Enum.UserInputType.MouseMovement or
+				input.UserInputType == Enum.UserInputType.Touch
+			then
+				DragInput = input
+			end
+		end
+	)
+
+	UserInputService.InputChanged:Connect(
+		function(input)
+			if input == DragInput and Dragging then
+				Update(input)
+			end
+		end
+	)
+end
+MakeDraggable(MainFrame, MainFrame)
+ClickSkipTarget.MouseButton1Down:Connect(function()
+    findtarget()
+end)
+
+local foldername = "Shinichi Hub | Auto Bounty"
+local filename = foldername.."/Config.json"
+function saveSettings()
+    local HttpService = game:GetService("HttpService")
+    local json = HttpService:JSONEncode(_G)
+    if true then
+        if isfolder(foldername) then
+            if isfile(filename) then
+                writefile(filename, json)
+            else
+                writefile(filename, json)
+            end
+        else
+            makefolder(foldername)
+        end
+    end
+end
+function loadSettings()
+    local HttpService = game:GetService("HttpService")
+    if isfolder(foldername) then
+        if isfile(filename) then
+            _G = HttpService:JSONDecode(readfile(filename))
+        end
+    end
+end
+
+loadSettings()
