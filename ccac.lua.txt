@@ -3469,7 +3469,6 @@ local function initializeScript()
 end
 
 local scriptEnv = initializeScript()
-return scriptEnv
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Reisaga/Ui-Library/refs/heads/main/labubuacabubu.lua"))()
@@ -3484,38 +3483,32 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
-local Main = Window:Tab("General","14477284625")
-local AutoQuest = Window:Tab("Items Quest","11446859498")
-local Events = Window:Tab("Auto Sea Event","10734941354")
-local Racer = Window:Tab("Race V4 & Esp","10747372167")
-local RaidFruit = Window:Tab("Raid & Fruits","10734975692")
-local Playerrss = Window:Tab("Teleport & PVP","10734910680")
-local MiscShop = Window:Tab("Shopee & Misc","10723434557")
-local AutoStatus = Window:Tab("Status Server","10709770317")
-
-local AutoFarm = Main:Section("Auto Main Farm","Left")
-local Settings = Main:Section("Settings Mastery","Right")
-
-local Items = AutoQuest:Section("Auto Items Quest","Left")
-local Dragon = AutoQuest:Section("Auto Dragon Quest","Right")
-
-local Volcano = Events:Section("Auto Prehistoric","Left")
-local Events = Events:Section("Auto Events","Right")
-
-local Trailers = Racer:Section("Auto Trail V4","Left")
-local Espbruh = Racer:Section("Auto Esp Player","Right")
-
-local AutoRaid = RaidFruit:Section("Auto Raid Fruit","Left")
-local Autofruit = RaidFruit:Section("Auto Random Fruit","Right")
-
-local Teleport = Playerrss:Section("Teleport Island","Left")
-local Playersss = Playerrss:Section("Players Combat","Right")
-
-local TikTokShop = MiscShop:Section("Lazada Shopee","Left")
-local AutoMisc = MiscShop:Section("Misc Auto","Right")
-
-local Status = AutoStatus:Section("Status Number","Left")
-local StatusTime = AutoStatus:Section("Status Time Game","Right")
+local Tabs = {
+    Main = Window:Tab("General", "14477284625"),
+    AutoQuest = Window:Tab("Items Quest", "11446859498"),
+    Events = Window:Tab("Auto Sea Event", "10734941354"),
+    Racer = Window:Tab("Race V4 & Esp", "10747372167"),
+    RaidFruit = Window:Tab("Raid & Fruits", "10734975692"),
+    Players = Window:Tab("Teleport & PVP", "10734910680"),
+    MiscShop = Window:Tab("Shopee & Misc", "10723434557"),
+    AutoStatus = Window:Tab("Status Server", "10709770317")
+    AutoFarm = Tabs.Main:Section("Auto Main Farm", "Left"),
+    Settings = Tabs.Main:Section("Settings Mastery", "Right"),
+    Items = Tabs.AutoQuest:Section("Auto Items Quest", "Left"),
+    Dragon = Tabs.AutoQuest:Section("Auto Dragon Quest", "Right"),
+    Volcano = Tabs.Events:Section("Auto Prehistoric", "Left"),
+    EventsSection = Tabs.Events:Section("Auto Events", "Right"),
+    Trailers = Tabs.Racer:Section("Auto Trail V4", "Left"),
+    Espbruh = Tabs.Racer:Section("Auto Esp Player", "Right"),
+    AutoRaid = Tabs.RaidFruit:Section("Auto Raid Fruit", "Left"),
+    Autofruit = Tabs.RaidFruit:Section("Auto Random Fruit", "Right"),
+    Teleport = Tabs.Players:Section("Teleport Island", "Left"),
+    PlayersCombat = Tabs.Players:Section("Players Combat", "Right"),
+    TikTokShop = Tabs.MiscShop:Section("Lazada Shopee", "Left"),
+    AutoMisc = Tabs.MiscShop:Section("Misc Auto", "Right"),
+    Status = Tabs.AutoStatus:Section("Status Number", "Left"),
+    StatusTime = Tabs.AutoStatus:Section("Status Time Game", "Right")
+}
 
 _G.SelectWeapon = "Melee"
   AutoFarm:Dropdown("Select Weapons",{"Melee","Sword","Gun","Blox Fruit"},{"Melee"},function(v)
